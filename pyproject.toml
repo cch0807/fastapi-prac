@@ -8,7 +8,13 @@ readme = "README.md"
 packages = [{include = "fastapi_dd"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8"
+alembic = "^1.9.4"
+fastapi = "^0.92.0"
+FastAPI-SQLAlchemy = "^0.2.1"
+pydantic = "^1.10.5"
+uvicorn = "^0.20.0"
+black = "^23.1.0"
 
 
 [build-system]
