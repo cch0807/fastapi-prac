@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
-from .database import Base
+from backend.database import Base
 
 class Question(Base):
     __tablename__ = "question"
