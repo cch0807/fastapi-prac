@@ -9,7 +9,7 @@ class Question(Base):
     id = Column(Integer, primary_key=True)
     subject = Column(String, nullable=False)
     content = Column(Text, nullable=False)
-    create_dat = Column(DateTime, nullable=False)
+    create_date = Column(DateTime, nullable=False)
 
 class Answer(Base):
     __tablename__ = "answer"
