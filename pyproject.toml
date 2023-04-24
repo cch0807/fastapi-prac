@@ -12,9 +12,10 @@ python = "^3.8"
 alembic = "^1.9.4"
 fastapi = "^0.92.0"
 FastAPI-SQLAlchemy = "^0.2.1"
-pydantic = "^1.10.5"
+pydantic = {extras = ["email"], version = "^1.10.7"}
 uvicorn = "^0.20.0"
 black = "^23.1.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 
 
 [build-system]
