@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from backend.domain.question.question_schema import QuestionCreate
+from backend.domain.question.question_schema import QuestionCreate, QuestionUpdate
 from backend.models import Question, User
 from sqlalchemy.orm import Session
 
@@ -25,5 +25,13 @@ def create_question(db: Session, question_create: QuestionCreate, user: User):
         create_date=datetime.now(),
         user=user,
     )
+    db.add(db_question)
+    db.commit()
+
+
+def update_question(db: Session, db_session: Question, question_update: QuestionUpdate):
+    db_question.subject = question_update.subject
+    db_question.content = question_update.content
+    db_question.modify_date = datetime.now()
     db.add(db_question)
     db.commit()
