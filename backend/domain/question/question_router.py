@@ -57,7 +57,7 @@ def question_update(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    db_question = qusetion_crud.get_question(
+    db_question = question_crud.get_question(
         db, question_id=_question_update.question_id
     )
     if not db_question:
