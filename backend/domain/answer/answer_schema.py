@@ -22,3 +22,7 @@ class Answer(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class Answer(BaseModel):
+    answer_id: int
