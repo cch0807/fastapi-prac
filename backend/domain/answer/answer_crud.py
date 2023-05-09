@@ -15,3 +15,13 @@ def create_answer(
 
     db.add(db_answer)
     db.commit()
+
+
+def delete_answer(db: Session, db_answer: Answer):
+    db.delete(db_answer)
+    db.commit()
+
+
+def get_answer(db: Session, answer_id: int):
+    answer = db.query(Answer).filter(answer_id=answer_id)
+    return answer
