@@ -36,16 +36,15 @@
             }
         )
     }
-
-    function delete_answer(answer_id) {
+    function delete_question(_question_id) {
         if(window.confirm('정말로 삭제하시겠습니까?')) {
-            let url = "/api/answer/delete"
+            let url = "/api/question/delete"
             let params = {
-                answer_id: answer_id
+                question_id: _question_id
             }
             fastapi('delete', url, params, 
                 (json) => {
-                    get_question()
+                    push('/')
                 },
                 (err_json) => {
                     error = err_json
@@ -72,7 +71,7 @@
                     <a use:link href="/question-modify/{question.id}" 
                         class="btn btn-sm btn-outline-secondary">수정</a>
                     <button class="btn btn-sm btn-outline-secondary"
-                    on:click={() => delete_answer(answer.id) }>삭제</button>
+                    on:click={() => delete_question(question.id)}>삭제</button>
                     {/if}
             </div>
         </div>
