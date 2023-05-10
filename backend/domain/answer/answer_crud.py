@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy.orm import Session
 
-from backend.domain.answer.answer_schema import AnswerCreate
+from backend.domain.answer.answer_schema import AnswerCreate, AnswerUpdate
 from backend.models import Question, Answer, User
 
 
@@ -13,5 +13,16 @@ def create_answer(
         question=question, content=answer_create.content, create_date=datetime.now()
     )
 
+    db.add(db_answer)
+    db.commit()
+
+
+def get_answer(db: Session, answer_id: int):
+    return db.query(Answer).get(answer_id)
+
+
+def update_answer(db: Session, db_answer: Answer, answer_update: AnswerUpdate):
+    db_answer.content = answer_update.content
+    db_answer.modify_date = datetime.now()
     db.add(db_answer)
     db.commit()
