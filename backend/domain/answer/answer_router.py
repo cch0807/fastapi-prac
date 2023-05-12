@@ -23,11 +23,6 @@ def answer_create(
     if not question:
         raise HTTPException(status_code=404, detail="Question not found")
 
-    answer_crud.create_answer(
-        db, question=question, answer_create=_answer_create, user=current_user
-    )
-
-
 @router.get("/detail/{answer_id}", response_model=answer_schema.Answer)
 def answer_detail(answer_id: int, db: Session = Depends(get_db)):
     answer = answer_crud.get_answer(db, answer_id=answer_id)
