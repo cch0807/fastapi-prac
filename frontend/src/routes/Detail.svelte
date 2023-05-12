@@ -36,6 +36,7 @@
             }
         )
     }
+
     function delete_question(_question_id) {
         if(window.confirm('정말로 삭제하시겠습니까?')) {
             let url = "/api/question/delete"
@@ -45,6 +46,23 @@
             fastapi('delete', url, params, 
                 (json) => {
                     push('/')
+                },
+                (err_json) => {
+                    error = err_json
+                }
+            )
+        }
+    }
+
+    function delete_answer(answer_id) {
+        if(window.confirm('정말로 삭제하시겠습니까?')) {
+            let url = "/api/answer/delete"
+            let params = {
+                answer_id: answer_id
+            }
+            fastapi('delete', url, params, 
+                (json) => {
+                    get_question()
                 },
                 (err_json) => {
                     error = err_json
@@ -92,6 +110,14 @@
                     <div class="mb-2">{ answer.user ? answer.user.username : ""}</div>
                     <div>{moment(answer.create_date).format("YYYY년 MM월 DD일 hh:mm a")}</div>
                 </div>
+            </div>
+            <div class="my-3">
+                {#if answer.user && $username === answer.user.username }
+                <a use:link href="/answer-modify/{answer.id}" 
+                    class="btn btn-sm btn-outline-secondary">수정</a>
+                <button class="btn btn-sm btn-outline-secondary"
+                    on:click={() => delete_answer(answer.id) }>삭제</button>
+                {/if}
             </div>
         </div>
     </div>
