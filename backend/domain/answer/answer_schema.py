@@ -26,10 +26,8 @@ class Answer(BaseModel):
     class Config:
         orm_mode = True
 
-
 class AnswerUpdate(AnswerCreate):
     answer_id: int
-
 
 class AnswerDelete(BaseModel):
     answer_id: int
