@@ -3,7 +3,7 @@
     import Error from "../components/Error.svelte"
     import { link, push } from 'svelte-spa-router'
     import { is_login, username } from "../lib/store"
-    import { marked } from 'makred'
+    import { marked } from 'marked'
     import moment from 'moment/min/moment-with-locales'
     moment.locale('ko')
 
